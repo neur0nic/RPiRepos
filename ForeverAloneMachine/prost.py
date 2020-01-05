@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from time import time, sleep, strftime
+import paramiko
 
 '''
 The Forever-Alone-Machine Mark II gives you someone to toast, even if you are alone or the other one is somewhere else
@@ -56,6 +57,20 @@ def add_to_log(errormessage):
         pass
 
 
+def connection_test(ip, login, passwd, pin):
+    GPIO.setup(pin, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
+    p = paramiko.SSHClient()
+    p.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    while True:
+        try:
+            p.connect(ip, port=22, username=login, password=passwd)
+            GPIO.output(GPIO.HIGH)
+        except:
+            add_to_log('Connection Lost')
+            GPIO.output(GPIO.LOW)
+        sleep(60)
+
+
 def mode_one():
     '''
     For drinking home alone
@@ -76,6 +91,6 @@ def mode_two():
 
 
 if __name__ == '__main__':
-    modeOne()
+    mode_one()
     GPIO.cleanup()
     exit()
