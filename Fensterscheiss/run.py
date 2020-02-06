@@ -23,6 +23,7 @@ def blink():
 
 def countdown():
     for i in range(1, 11):
+        print(i + ' Min.')
         sleep(60)
         blink()
     pass
@@ -44,9 +45,12 @@ def buzzer():
 
 
 if __name__ == '__main__':
+    print('Program started')
     blink()
     countdown()
+    print('Countdown ended')
     buzzer()
     blink()
+    print('Ready to shutdown')
     system('systemctl poweroff')
     exit()
