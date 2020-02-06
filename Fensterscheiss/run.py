@@ -8,7 +8,7 @@ G.setwarnings(0)
 LED = 2
 G.setup(LED, G.OUT)
 Button = 22
-G.setup(Button, G.IN, pull_up_down=G.PUD_UP)
+G.setup(Button, G.IN, pull_up_down=G.PUD_DOWN)
 Buzzpin = 18
 G.setup(Buzzpin, G.OUT)
 
@@ -30,7 +30,8 @@ def countdown():
 
 
 def button():
-    G.wait_for_edge(Button, G.FALLING)
+    while not G.input(22):
+        pass
     return True
 
 

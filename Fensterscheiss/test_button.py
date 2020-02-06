@@ -15,9 +15,6 @@ def button():
 
 if __name__ == '__main__':
     button()
-    #while True:
-    #    if G.input(22) == G.HIGH:
-    #        print("Button was pushed!")
     print('Test exited successfully.')
     G.cleanup()
     exit()
