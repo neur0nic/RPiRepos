@@ -10,7 +10,7 @@ G.setup(LED, G.OUT)
 Button = 22
 G.setup(Button, G.IN, pull_up_down=G.PUD_UP)
 Buzzpin = 18
-G.setup(Buzzpin, G.PWM)
+G.setup(Buzzpin, G.OUT)
 
 
 def blink():
@@ -35,12 +35,12 @@ def button():
 
 
 def buzzer():
-    p = G.PWM(Button, 200)
+    p = G.PWM(Button, 100)
     p.start(0)
     while not button():
-        p.ChangeDutyCircle(50)
+        p.ChangeDutyCycle(50)
         sleep(1)
-        p.ChangeDutyCircle(100)
+        p.ChangeDutyCycle(100)
         sleep(1)
 
 
