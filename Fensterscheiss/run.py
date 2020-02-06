@@ -8,7 +8,9 @@ G.setwarnings(0)
 LED = 2
 G.setup(LED, G.OUT)
 Button = 22
+G.setup(Button, G.IN, pull_up_down=G.PUD_UP)
 Buzzpin = 18
+G.setup(Buzzpin, G.PWM)
 
 
 def blink():
@@ -26,14 +28,19 @@ def countdown():
     pass
 
 
-def button(pin):
-    G.setup(pin, G.IN, pull_up_down=G.PUD_UP)
-    G.wait_for_edge(pin, G.FALLING)
+def button():
+    G.wait_for_edge(Button, G.FALLING)
     return True
 
 
 def buzzer():
-    pass
+    p = G.PWM(Button, 200)
+    p.start(0)
+    while not button():
+        p.ChangeDutyCircle(50)
+        sleep(1)
+        p.ChangeDutyCircle(100)
+        sleep(1)
 
 
 if __name__ == '__main__':
