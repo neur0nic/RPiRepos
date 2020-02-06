@@ -7,8 +7,7 @@ G.setup(22, G.IN, pull_up_down=G.PUD_DOWN)
 
 if __name__ == '__main__':
     while True:
-        if G.input(15) == G.HIGH:
+        if G.input(22) == G.HIGH:
             print("Button was pushed!")
-    print('Test exited successfully.')
     G.cleanup()
     exit()
