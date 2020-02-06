@@ -38,12 +38,13 @@ def button():
 def buzzer():
     p = G.PWM(Buzzpin, 100)
     p.start(0)
-    while not button():
+    while True:
         p.ChangeDutyCycle(50)
         sleep(1)
         p.ChangeDutyCycle(100)
         sleep(1)
-
+        if button():
+            break
 
 if __name__ == '__main__':
     print('Program started')
