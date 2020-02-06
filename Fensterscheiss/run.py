@@ -23,7 +23,7 @@ def blink():
 
 def countdown():
     for i in range(1, 11):
-        print(i + ' Min.')
+        print(i)
         sleep(10)       # Changed from 60s to 10s for debugging
         blink()
     pass
