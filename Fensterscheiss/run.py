@@ -40,9 +40,13 @@ def buzzer():
     p.start(0)
     while True:
         p.ChangeDutyCycle(50)
-        sleep(1)
+        sleep(0.2)
+        p.ChangeDutyCycle(0)
+        sleep(0.5)
         p.ChangeDutyCycle(100)
-        sleep(1)
+        sleep(0.2)
+        p.ChangeDutyCycle(0)
+        sleep(0.5)
         if button():
             break
 
@@ -55,5 +59,5 @@ if __name__ == '__main__':
     blink()
     print('Ready to shutdown')
     system('systemctl poweroff')
-    G.cleanup()
+    #G.cleanup()
     exit()
