@@ -22,7 +22,7 @@ def blink():
 
 
 def countdown():
-    for i in range(1, 11):
+    for i in range(1, 2):
         print(i)
         sleep(10)       # Changed from 60s to 10s for debugging
         blink()
@@ -36,7 +36,7 @@ def button():
 
 
 def buzzer():
-    p = G.PWM(Button, 100)
+    p = G.PWM(Buzzpin, 100)
     p.start(0)
     while not button():
         p.ChangeDutyCycle(50)
