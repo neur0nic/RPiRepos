@@ -53,4 +53,5 @@ if __name__ == '__main__':
     blink()
     print('Ready to shutdown')
     system('systemctl poweroff')
+    G.cleanup()
     exit()

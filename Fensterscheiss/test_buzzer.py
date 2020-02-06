@@ -16,4 +16,5 @@ if __name__ == '__main__':
         sleep(0.5)
     p.stop()
     print('Test exited successfully.')
+    G.cleanup()
     exit()
