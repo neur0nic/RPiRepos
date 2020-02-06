@@ -22,7 +22,7 @@ def blink():
 
 
 def countdown():
-    for i in range(1, 2):
+    for i in range(1, 10):
         print(i)
         sleep(10)       # Changed from 60s to 10s for debugging
         blink()
@@ -49,6 +49,7 @@ def buzzer():
         sleep(0.5)
         if button():
             break
+
 
 if __name__ == '__main__':
     print('Program started')
