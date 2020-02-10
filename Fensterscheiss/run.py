@@ -1,5 +1,5 @@
 import RPi.GPIO as G
-from time import sleep
+from time import sleep, strftime
 from os import system
 
 G.setmode(G.BCM)
@@ -24,7 +24,7 @@ def blink():
 
 def countdown():
     for i in range(1, 10):
-        print(i)
+        #print(i)
         sleep(60)
         blink()
     pass
@@ -46,15 +46,27 @@ def buzz():
         sleep(0.5)
 
 
+def add_to_log(logmessage):
+    """ Creates a log-file with time and message
+        :param logmessage:    the error message; str
+    """
+    if isinstance(logmessage, str):
+        time = strftime("%Y-%m-%d: %H:%M:%S - ")
+        with open('Fensterscheiss.log', 'a') as fa:
+            fa.write(time + logmessage)
+    else:
+        pass
+
+
 if __name__ == '__main__':
-    print('Program started')
+    add_to_log('Program started')
     blink()
     countdown()
-    print('Countdown ended')
+    #print('Countdown ended')
     p.start(0)
     button()
     blink()
-    print('Ready to shutdown')
+    add_to_log('Ready to shutdown')
     system('systemctl poweroff')
     #G.cleanup()
     exit()
