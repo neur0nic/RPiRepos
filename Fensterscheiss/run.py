@@ -24,7 +24,7 @@ def blink():
 def countdown():
     for i in range(1, 10):
         print(i)
-        sleep(10)       # Changed from 60s to 10s for debugging
+        sleep(60)
         blink()
     pass
 
