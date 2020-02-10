@@ -11,6 +11,7 @@ Button = 22
 G.setup(Button, G.IN, pull_up_down=G.PUD_DOWN)
 Buzzpin = 18
 G.setup(Buzzpin, G.OUT)
+p = G.PWM(Buzzpin, 100)
 
 
 def blink():
@@ -29,23 +30,20 @@ def countdown():
     pass
 
 
-def button(fnktn):
+def button():
     while not G.input(22):
-        fnktn
+        buzz()
+        sleep(0.1)
+    print('Pushed')
+    return True
 
 
-def buzzer():
-    p = G.PWM(Buzzpin, 100)
-    p.start(0)
-    p.ChangeDutyCycle(50)
-    sleep(0.2)
-    p.ChangeDutyCycle(0)
-    sleep(0.5)
-    p.ChangeDutyCycle(100)
-    sleep(0.2)
-    p.ChangeDutyCycle(0)
-    sleep(0.5)
-    p.stop()
+def buzz():
+    for j in [50, 100]:
+        p.ChangeDutyCycle(j)
+        sleep(0.2)
+        p.ChangeDutyCycle(0)
+        sleep(0.5)
 
 
 if __name__ == '__main__':
@@ -53,7 +51,8 @@ if __name__ == '__main__':
     blink()
     countdown()
     print('Countdown ended')
-    button(buzzer())
+    p.start(0)
+    button()
     blink()
     print('Ready to shutdown')
     system('systemctl poweroff')
