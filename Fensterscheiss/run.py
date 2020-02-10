@@ -29,10 +29,9 @@ def countdown():
     pass
 
 
-def button():
+def button(fnktn):
     while not G.input(22):
-        pass
-    return True
+        fnktn
 
 
 def buzzer():
@@ -47,8 +46,6 @@ def buzzer():
         sleep(0.2)
         p.ChangeDutyCycle(0)
         sleep(0.5)
-        if button():
-            break
 
 
 if __name__ == '__main__':
@@ -56,7 +53,7 @@ if __name__ == '__main__':
     blink()
     countdown()
     print('Countdown ended')
-    buzzer()
+    button(buzzer())
     blink()
     print('Ready to shutdown')
     system('systemctl poweroff')
