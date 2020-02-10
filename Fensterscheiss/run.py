@@ -33,7 +33,7 @@ def countdown():
 def button():
     while not G.input(22):
         buzz()
-        sleep(0.1)
+        sleep(0.05)
     print('Pushed')
     return True
 
