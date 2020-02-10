@@ -5,7 +5,7 @@ from os import system
 G.setmode(G.BCM)
 G.setwarnings(0)
 
-LED = 2
+LED = 12
 G.setup(LED, G.OUT)
 Button = 22
 G.setup(Button, G.IN, pull_up_down=G.PUD_DOWN)
