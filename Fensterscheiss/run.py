@@ -53,7 +53,7 @@ def add_to_log(logmessage):
     if isinstance(logmessage, str):
         time = strftime("%Y-%m-%d: %H:%M:%S - ")
         with open('Fensterscheiss.log', 'a') as fa:
-            fa.write(time + logmessage)
+            fa.write(time + logmessage + '\n')
     else:
         pass
 
