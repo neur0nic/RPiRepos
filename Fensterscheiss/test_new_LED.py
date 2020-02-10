@@ -4,7 +4,7 @@ from time import sleep
 G.setmode(G.BCM)
 G.setwarnings(0)
 
-G.setup(12, G.IN)
+G.setup(12, G.OUT)
 
 if __name__ == '__main__':
     for i in range(1, 21):
