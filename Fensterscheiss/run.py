@@ -37,15 +37,15 @@ def button(fnktn):
 def buzzer():
     p = G.PWM(Buzzpin, 100)
     p.start(0)
-    while True:
-        p.ChangeDutyCycle(50)
-        sleep(0.2)
-        p.ChangeDutyCycle(0)
-        sleep(0.5)
-        p.ChangeDutyCycle(100)
-        sleep(0.2)
-        p.ChangeDutyCycle(0)
-        sleep(0.5)
+    p.ChangeDutyCycle(50)
+    sleep(0.2)
+    p.ChangeDutyCycle(0)
+    sleep(0.5)
+    p.ChangeDutyCycle(100)
+    sleep(0.2)
+    p.ChangeDutyCycle(0)
+    sleep(0.5)
+    p.stop()
 
 
 if __name__ == '__main__':
